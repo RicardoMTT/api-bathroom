@@ -17,6 +17,9 @@ COPY . /var/www/html
 # Cambia al directorio de trabajo
 WORKDIR /var/www/html
 
+RUN chmod -R 775 storage/ bootstrap/cache/
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
 # Instala las dependencias de Composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
