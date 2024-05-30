@@ -5,6 +5,7 @@ FROM php:8.1-fpm
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     zip \
+    unzip \
   && docker-php-ext-install zip
 
 # Instala Composer
@@ -18,6 +19,9 @@ WORKDIR /var/www/html
 
 # Instala las dependencias de Composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# Genera la clave de la aplicación
+RUN php artisan key:generate
 
 # Expone el puerto 8000 para servir la aplicación
 EXPOSE 8000
