@@ -1,0 +1,7 @@
+Entities
+
+-Place
+
+-PlaceDetail
+
+-Imagen
